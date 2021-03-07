@@ -25,6 +25,6 @@ The aws package provides functions for creating artificial seawater from Instant
 You can install asw like so:
 
 ``` r
-devtools::install_github("jennybc/foofactors")
+devtools::install_github("pmcelhany/aws")
 ```
 

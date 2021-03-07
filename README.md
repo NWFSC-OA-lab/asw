@@ -15,5 +15,5 @@ Instant Ocean with a given salinity and alkalinity.
 You can install asw like so:
 
 ``` r
-devtools::install_github("jennybc/foofactors")
+devtools::install_github("pmcelhany/aws")
 ```
