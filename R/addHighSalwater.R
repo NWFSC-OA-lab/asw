@@ -1,6 +1,6 @@
 #' function to calculate the volume of high salinity water to add to head tank
 #' @param initVol intial volume of water in the  head tank (L)
-#' @param initVol intial salinity of water in the  head tank (ppt)
+#' @param initS intial salinity of water in the  head tank (ppt)
 #' @param targetVol target final of water in the  head tank (L)
 #' @param targetS target final salinitiy of water in the head tank (ppt)
 #' @param highSwater salinity of high salinity water that will be added to the tank (ppt)

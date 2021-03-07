@@ -13,7 +13,7 @@ findAlk <- function(acid, targetAlk, initAlk, initDIC, pCO2, acidConc, targetS, 
   deltaSQ <- .Machine$double.xmax
   acid <- -1 * acid
   pph <- NULL
-  try(pph <- ppH(flag = 15, initAlk, initDIC, sys = 1, pCO2a = pCO2,
+  try(pph <- seacarb::ppH(flag = 15, initAlk, initDIC, sys = 1, pCO2a = pCO2,
                  vol =  acid, N = acidConc, S = targetS, T = targetT),
       silent = TRUE)
   if(!is.null(pph)){
