@@ -54,6 +54,9 @@ addAcid <- function(initVol, initS, initT, initPH, targetVol, targetS, targetT,
   initAlk <- initCarb$ALK
   initDIC <- initCarb$DIC
 
+  # TODO Add test whether initial pH, pCO2, salinity relationship is feasable
+  # given the instant ocean alkalinity vs salinity relationship in alkIO. The
+  # value is not possible (given 20% tolerance), return NULL.
 
   boundsTest <- seq(-0.1, 0.1, by = 0.0001)
   minBound <- 0.1
