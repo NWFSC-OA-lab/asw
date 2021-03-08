@@ -53,7 +53,7 @@ acid_add_lut <- function(pCO2, salinityTarget, temperatureTarget, acidConc, targ
                             targetT = temperatureTarget, targetAlk = targetAlk,
                             acidConc = acidConc, pCO2 = pCO2, highSwater = 60), silent = TRUE)
           if(is.null(aa)){
-            aTotal <- 0
+            aTotal <- NA
           } else {
             aTotal <- aa$totalAcid / (volRatio[h]-1)
           }
