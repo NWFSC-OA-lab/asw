@@ -6,8 +6,10 @@
 #' @param temperatureTarget Temperature target for final solution (degrees C)
 #' @param acidConc  HCl concentration (Normality)
 #' @param targetAlk Alkalinity target for the final solution (umol/kg)
-#' @param minVolRatio LUT parameter. min(volume of final solution / initial volume)
-#' @param maxVolRatio LUT parameter. max(volume of final solution / initial volume)
+#' @param minVolRatio LUT parameter. min(volume of final solution / initial
+#'   volume)
+#' @param maxVolRatio LUT parameter. max(volume of final solution / initial
+#'   volume)
 #' @param byVolRatio LUT parameter. Table increment for volume ratio.
 #' @param minInitPH LUT parameter. min(initial solution pH)
 #' @param maxInitPH LUT parameter. max(initial solution pH)
@@ -15,11 +17,16 @@
 #' @param minInitSal LUT parameter. min(initial solution salinity). psu.
 #' @param maxInitSal LUT parameter. max(initial solution salinity). psu.
 #' @param byInitSal LUT parameter. Table increment for initial salinity
-#' @param minInitTemp LUT parameter. min(initial solution temperature). degrees C
-#' @param maxInitTemp LUT parameter. max(initial solution temperature). degrees C
+#' @param minInitTemp LUT parameter. min(initial solution temperature). degrees
+#'   C
+#' @param maxInitTemp LUT parameter. max(initial solution temperature). degrees
+#'   C
 #' @param byInitTemp LUT parameter. Table increment for initial temperature.
 #'
-#' @return
+#' @return Add Acid look table. The addAcidPerLiter column is the amount of HCl
+#'   (ml) at the specified normality to add per liter of salt water added to the
+#'   initial solution.
+#' @export
 
 acid_add_lut <- function(pCO2, salinityTarget, temperatureTarget, acidConc, targetAlk,
                          minVolRatio = 2, maxVolRatio = 10, byVolRatio = 2,

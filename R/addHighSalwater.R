@@ -12,6 +12,7 @@
 #'   \item addHighSwaterVol - volume of high salinity water to add to the tank (L)
 #'   \item addDIwaterVol - volume of DI water to add to the tank (L)
 #' }
+#' @export
 addHighSalwater <- function(initVol, initS, targetVol, targetS, highSwater){
   # these these estimation calculation assume psu ~ ppt
   # target final total grams of salt in tank

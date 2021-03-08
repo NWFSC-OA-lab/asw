@@ -9,6 +9,7 @@
 #' @param intercept empirically derived slope of Instant Ocean alklaliniy  vs
 #'   salinity relationship. Default is 0.
 #' @return alkalinity of Instant Ocean (umol/kg)
+#' @export
 alkIO <- function(salinity, slope = 3200/35, intercept = 0){
   alk <- salinity * slope + intercept
   return(alk)

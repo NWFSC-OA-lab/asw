@@ -27,7 +27,7 @@
 #'  to create west coast water
 #'  \item finalPH - the target pH for the final
 #'  solution (this will the the pH feedback setting) }
-#'
+#'@export
 
 addAcid <- function(initVol, initS, initT, initPH, targetVol, targetS, targetT,
                     targetAlk, acidConc, pCO2, highSwater){

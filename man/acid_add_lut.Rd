@@ -35,9 +35,11 @@ acid_add_lut(
 
 \item{targetAlk}{Alkalinity target for the final solution (umol/kg)}
 
-\item{minVolRatio}{LUT parameter. min(volume of final solution / initial volume)}
+\item{minVolRatio}{LUT parameter. min(volume of final solution / initial
+volume)}
 
-\item{maxVolRatio}{LUT parameter. max(volume of final solution / initial volume)}
+\item{maxVolRatio}{LUT parameter. max(volume of final solution / initial
+volume)}
 
 \item{byVolRatio}{LUT parameter. Table increment for volume ratio.}
 
@@ -53,14 +55,18 @@ acid_add_lut(
 
 \item{byInitSal}{LUT parameter. Table increment for initial salinity}
 
-\item{minInitTemp}{LUT parameter. min(initial solution temperature). degrees C}
+\item{minInitTemp}{LUT parameter. min(initial solution temperature). degrees
+C}
 
-\item{maxInitTemp}{LUT parameter. max(initial solution temperature). degrees C}
+\item{maxInitTemp}{LUT parameter. max(initial solution temperature). degrees
+C}
 
 \item{byInitTemp}{LUT parameter. Table increment for initial temperature.}
 }
 \value{
-
+Add Acid look table. The addAcidPerLiter column is the amount of HCl
+(ml) at the specified normality to add per liter of salt water added to the
+initial solution.
 }
 \description{
 Create Add Acid Look Up Table
