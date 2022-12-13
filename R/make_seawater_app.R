@@ -7,39 +7,64 @@ library(stringr)
 
 # Define UI ----
 ui <- fluidPage(
-  titlePanel("Making seawater calcs"),
+  titlePanel("Making seawater calcs (ballpark estimates)"),
   sidebarLayout(
-    sidebarPanel( width = 2,
-                  numericInput("init_sal", "Initial Salinity (psu)", "32"),
-                  numericInput("init_vol", "Initial volume (L)", "20"),
-                  numericInput("target_sal", "Targret Salinity (psu)", "31"),
-                  numericInput("target_vol", "Target Volume (L)", "60"),
-                  textOutput("sm_add_salt", "Salt Mixing: Add Salt (g)"),
-                  textOutput("sm_add_di", "Salt Mixing: Add DI (L)"),
-                  textOutput("wm_add_sw", "Water Mixing: Add Initial Seawater (L)"),
-                  textOutput("wm_add_di", "Water Mixing: Add Initial Seawater (L)")
+    sidebarPanel( width = 4,
+                  numericInput("hst_init_sal", "HST Initial Salinity (psu)", "35.3"),
+                  numericInput("hst_init_vol", "HST Initial volume (L)", "20"),
+                  numericInput("hst_target_sal", "HST Target Salinity (psu)", "34.9"),
+                  numericInput("hst_target_vol", "HST Target Volume (L)", "60"),
+                  textOutput("hst_add_salt"),
+                  textOutput("hst_add_di"),
+
+                  numericInput("sst_init_sal", "SST Initial Salinity (psu)", "30.1"),
+                  numericInput("sst_init_vol", "SST Initial Volume (L)", "15"),
+                  numericInput("sst_target_sal", "SST Target Salinity (psu)", "30"),
+                  numericInput("sst_target_vol", "SST Target Volume (L)", "50"),
+                  textOutput("sst_add_hst"),
+                  textOutput("sst_add_di"),
+                  textOutput("sst_just_di_dilute")
     ),
     mainPanel(
-      width = 10,
+      width = 8,
       # this suppresses error messages
       tags$style(type="text/css",
                  ".shiny-output-error { visibility: hidden; }",
                  ".shiny-output-error:before { visibility: hidden; }"
       ),
-      #plotOutput("plot", width = "100%", height = "740px")
     )
   )
 )
 
 # Define server logic ----
 server <- function(input, output) {
-  # output$wm_add_sw <- renderText({ input$target_sal / input$init_sal * input$target_vol })
-  # output$wm_add_di <- renderText({ input$target_vol -input$target_sal /
-  # input$init_sal * input$target_vol})
+  output$hst_add_salt <- renderText({ paste("HST Add Salt (g):",
+                                           round(input$hst_target_sal *
+                                                   input$hst_target_vol -
+                                                   input$hst_init_sal *
+                                                   input$hst_init_vol, 2)) })
+  output$hst_add_di <- renderText({ paste("HST Add DI (L):",
+                                         input$hst_target_vol - input$hst_init_vol) })
 
 
-  # output$plot <- renderPlot({
-  # })
+
+  output$sst_add_hst <- renderText({paste("Add HST to SST (L):",
+                                          round(((input$sst_target_sal *  input$sst_target_vol) -
+                                            (input$sst_init_sal * input$sst_init_vol)) /
+                                            input$hst_init_sal, 2))})
+  output$sst_add_di <- renderText({paste("Add DI Water (with HST) to SST (L):",
+                                         round(input$sst_target_vol -
+                                                 input$sst_init_vol -
+                                                 ((input$sst_target_sal *  input$sst_target_vol) -
+                                                  (input$sst_init_sal * input$sst_init_vol)) /
+                                                 input$hst_init_sal, 2))})
+  output$sst_just_di_dilute <- renderText({paste("Add DI Water (just dilute) to SST (L):",
+                                                 round(input$sst_init_sal *
+                                                         input$sst_init_vol /
+                                                         input$sst_target_sal -
+                                                         input$sst_init_vol, 2))})
+
+
 
 }
 
